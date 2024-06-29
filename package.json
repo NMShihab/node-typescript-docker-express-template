@@ -7,8 +7,8 @@
     "build": "rimraf dist && swc ./src -d dist",
     "start": "node dist/src/index.js",
     "dev": "rimraf dist && swc ./src -d dist && node dist/src/index.js",
-    "start:docker": "pnpm build && pnpm start",
-    "watch": "nodemon --watch src --ext ts --exec 'pnpm run build && pnpm run start' --delay 2000ms --signal SIGTERM"
+    "start:docker": "pnpm build && node --inspect=0.0.0.0 dist/src/index.js",
+    "watch": "nodemon --watch src --ext ts --exec 'pnpm run start:docker' --delay 2000ms --signal SIGTERM"
   },
   "keywords": [],
   "author": "",
