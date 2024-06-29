@@ -1,0 +1,23 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "5000:5000"
+      - "9229:9229" # Debugger port
+    develop:
+      watch:
+        - action : sync
+          path : ./src
+          target : app/src 
+        - action : rebuild
+          path : package.json
+    # volumes: 
+    #   - .:/usr/src/app
+    #   - /usr/src/app/node_modules
+    #   - /usr/src/app/.pnpm-store
+
+    command: pnpm watch
+    
+    environment:
+      PORT : 5000
+    
